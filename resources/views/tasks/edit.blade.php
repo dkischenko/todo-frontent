@@ -27,7 +27,7 @@
                         <input id="date-{{$task->id}}" class="form-control" id="date-{{$task->id}}" type="date" maxlength="255"
                                name="deadline" value="{{$task->deadline}}" placeholder="Deadline">
                     </div>
-                    <input name="project_id" value="{{$task->project->id}}" hidden>
+                    <input name="project_id" value="{{$project->id}}" hidden>
                 </form>
             </div>
             <div class="modal-footer">

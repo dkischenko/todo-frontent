@@ -46,7 +46,7 @@
                                             <button class="btn btn-danger" data-toggle="modal"
                                                     data-target="#delete-task-{{$task->id}}"><i class="far fa-trash-alt"></i></button>
                                         </li>
-                                        @include('tasks.edit')
+                                        @include('tasks.edit', ['project' => $project])
                                         @include('tasks.delete')
                                     @endforeach
                                 </ul>
