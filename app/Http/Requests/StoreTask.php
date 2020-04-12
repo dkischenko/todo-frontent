@@ -30,7 +30,7 @@ class StoreTask extends FormRequest
         return [
             'title' => 'required|string|min:5|max:255',
             'status' => 'boolean',
-            'deadline' => 'date|date_format:Y-m-d',
+            'deadline' => 'nullable|date|date_format:Y-m-d',
             'project_id' => 'required|integer'
         ];
     }

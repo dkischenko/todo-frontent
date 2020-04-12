@@ -53,6 +53,27 @@ class TaskTest extends TestCase
     }
 
     /** @test */
+    public function user_can_update_task_without_deadline()
+    {
+        $this->withoutExceptionHandling();
+        Session::start();
+
+        $task = factory(Task::class)->create([
+            'title' => 'Test task #1'
+        ]);
+
+        $this
+            ->actingAs($task->project->user)
+            ->put(route('tasks.update', $task->id), [
+                '_token' => Session::token(),
+                'status' => 1,
+                'title' => 'Test task updated #1',
+                'project_id' => $task->project->id
+            ])
+            ->assertStatus(302);
+    }
+
+    /** @test */
     public function user_can_delete_task()
     {
         $this->withoutExceptionHandling();

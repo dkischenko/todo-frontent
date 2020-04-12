@@ -32,6 +32,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Task whereDeadline($value)
  * @method static Builder|Task whereProjectId($value)
  * @method static Builder|Task whereStatus($value)
+ * @property int|null $position
+ * @method static Builder|Task wherePosition($value)
  */
 class Task extends Model
 {
@@ -39,7 +41,8 @@ class Task extends Model
         'title',
         'status',
         'deadline',
-        'project_id'
+        'project_id',
+        'position'
     ];
 
     /**

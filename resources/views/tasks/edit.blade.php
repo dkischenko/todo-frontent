@@ -20,11 +20,11 @@
                     <div class="form-check">
                         <input class="form-check-input" id="status-{{$task->id}}" type="checkbox"
                                name="status" value=1 @if($task->status) checked @endif>
-                        <label for="status" class="form-check-label">Status</label>
+                        <label for="status-{{$task->id}}" class="form-check-label">Status</label>
                     </div>
                     <div class="form-group">
-                        <label for="title">Deadline:</label>
-                        <input class="form-control" id="date-{{$task->id}}" type="date" maxlength="255"
+                        <label for="date-{{$task->id}}">Deadline:</label>
+                        <input id="date-{{$task->id}}" class="form-control" id="date-{{$task->id}}" type="date" maxlength="255"
                                name="deadline" value="{{$task->deadline}}" placeholder="Deadline">
                     </div>
                     <input name="project_id" value="{{$task->project->id}}" hidden>
