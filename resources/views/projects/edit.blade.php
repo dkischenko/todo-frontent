@@ -13,8 +13,8 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="title">Title:</label>
-                        <input class="form-control" type="text" maxlength="255"
+                        <label for="project-title-{{$project->id}}">Title:</label>
+                        <input class="form-control" type="text" maxlength="255" id="project-title-{{$project->id}}"
                                name="title" value="{{$project->title}}" placeholder="Project title">
                     </div>
                     <input name="user_id" value="{{Auth::id()}}" hidden>

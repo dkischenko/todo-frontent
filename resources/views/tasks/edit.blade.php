@@ -13,7 +13,7 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="title">Title:</label>
+                        <label for="title-{{$task->id}}">Title:</label>
                         <input class="form-control" id="title-{{$task->id}}" type="text" maxlength="255"
                                name="title" value="{{$task->title}}" placeholder="Project title">
                     </div>

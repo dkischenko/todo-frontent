@@ -8,7 +8,7 @@ Technical requirements
 
 SELECT DISTINCT status
 FROM tasks
-ORDERED BY status ASC
+ORDER BY status ASC
 
 
 - get the count of all tasks in each project, order by tasks count
@@ -63,7 +63,7 @@ GROUP BY tasks.project_id
 SELECT t1.*
 FROM tasks t1
 JOIN (SELECT title
-FROM tasks 
+FROM tasks
 GROUP BY title
 HAVING count(*) > 1 ) t2
 ON t1.title = t2.title
@@ -76,15 +76,15 @@ status, from the project 'Garage'. Order by matches count
 получить список задач имеющих точное совпадение по имени и статусу из проекта Garage.
 отсортировать по колличеству совпадений
 
-SELECT 
+SELECT
     tasks.title, COUNT(tasks.title) as count_title,
     tasks.status,  COUNT(tasks.status) as count_status
 FROM
     projects
 INNER JOIN tasks ON projects.id = tasks.project_id
 WHERE projects.title = 'Garage'
-GROUP BY 
-    tasks.title, 
+GROUP BY
+    tasks.title,
     tasks.status
 HAVING  COUNT(tasks.title) > 1
     AND COUNT(tasks.status) > 1
