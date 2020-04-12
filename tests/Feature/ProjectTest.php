@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Project;
+use App\Models\Task;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Session;
@@ -63,6 +64,21 @@ class ProjectTest extends TestCase
         $this
             ->actingAs($project->user)
             ->delete(route('projects.destroy', $project->id), [
+                '_token' => Session::token()
+            ])
+            ->assertStatus(302);
+    }
+
+    /** @test */
+    public function user_can_delete_project_with_tasks()
+    {
+        $this->withoutExceptionHandling();
+        $task = factory(Task::class)->create();
+        Session::start();
+
+        $this
+            ->actingAs($task->project->user)
+            ->delete(route('projects.destroy', $task->project->id), [
                 '_token' => Session::token()
             ])
             ->assertStatus(302);

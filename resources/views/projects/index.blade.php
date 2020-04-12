@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <form class="form-inline" action="{{ route('tasks.store') }}" method="POST">
                         @csrf
-                        <div class="input-group">
+                        <div class="input-group col-md-12">
                             <input type="text" name="title" class="form-control" required placeholder="Start type here to create a task..."
                                    aria-label="Start type here to create a task..." aria-describedby="button-addon2">
                             <input name="project_id" value="{{$project->id}}" hidden>
@@ -32,27 +32,35 @@
                         </div>
                     </form>
 
-                    <div class="tasks-of-project list-group">
-                        @foreach($project->task as $task)
-                            <div class="row draggable" id="row-task-{{$task->id}}">
-                                <div class="col-md-10 list-group-item">
-                                    <p>{{$task->title}}</p>
-                                </div>
-                                <div class="col-md-2">
-                                    <button class="btn btn-primary" data-toggle="modal"
-                                            data-target="#edit-task-{{$task->id}}"><i class="fas fa-edit "></i></button>
-                                    <button class="btn btn-danger" data-toggle="modal"
-                                            data-target="#delete-task-{{$task->id}}"><i class="far fa-trash-alt"></i></button>
-                                </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="list-group">
+                                    @foreach($project->task as $task)
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <p class="p-0 m-0 flex-grow-1">@if($task->status)<i class="fas fa-check"></i>@endif
+                                                {{$task->title}}</p>
+                                            <p class="p-1 m-1 flex-grow-2">{{$task->deadline}}</p>
+                                            <button class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#edit-task-{{$task->id}}"><i class="fas fa-edit "></i></button>
+                                            <button class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#delete-task-{{$task->id}}"><i class="far fa-trash-alt"></i></button>
+                                        </li>
+                                        @include('tasks.edit')
+                                        @include('tasks.delete')
+                                    @endforeach
+                                </ul>
                             </div>
-                            @include('tasks.edit')
-                            @include('tasks.delete')
-                        @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @empty
-    <p>No project</p>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-8">
+            <p>There are no projects</p>
+        </div>
+    </div>
 @endforelse

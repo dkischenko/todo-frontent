@@ -1,11 +1,9 @@
+Code Coverage Report:
+  2020-04-12 06:35:59
 
-
-Code Coverage Report:     
-  2020-04-11 17:21:33     
-                          
- Summary:                 
-  Classes: 50.00% (13/26) 
-  Methods: 62.75% (32/51) 
+ Summary:
+  Classes: 50.00% (13/26)
+  Methods: 62.75% (32/51)
   Lines:   58.49% (62/106)
 
 \App\Console::App\Console\Kernel
